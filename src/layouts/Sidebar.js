@@ -29,6 +29,12 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
+          <Link to="/goals">
+            <i className="uil uil-bookmark"></i>
+            <span>เป้าประสงค์</span>
+          </Link>
+        </li>
+        <li>
           <Link to="/strategies">
             <i className="uil uil-rocket"></i>
             <span>กลยุทธ์</span>            

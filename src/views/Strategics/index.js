@@ -16,9 +16,9 @@ const StrategicView = () => {
 
   return (
     <div className="content">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">
+      <div className="card">
+        <div className="card-body">
+          <div className="card-title">
             <h3>ยุทธศาสตร์โรงพยาบาล</h3>
           </div>
 
@@ -41,12 +41,12 @@ const StrategicView = () => {
                     <td>{strategic.strategic_name}</td>
                     <td style={{ textAlign: 'center' }}>{`${strategic.start_year} - ${strategic.end_year}`}</td>
                     <td style={{ textAlign: 'center' }}>
-                      <div class="btn-group">
+                      <div className="btn-group">
                         <a href="#" className="btn btn-warning btn-sm">
-                          <i class="uil uil-pen"></i>
+                          <i className="uil uil-pen"></i>
                         </a>
                         <a href="#" className="btn btn-danger btn-sm">
-                          <i class="uil uil-trash-alt"></i>
+                          <i className="uil uil-trash-alt"></i>
                         </a>
                       </div>
                     </td>
