@@ -32,7 +32,7 @@ const StrategyView = () => {
           <div className="card-title">
             <div className="row">
               <div className="col-md-6">
-                <h3>กลยุทธ์</h3>
+                <h3>กลยุทธ์ (Strategies)</h3>
               </div>
               <div className="col-md-6">
                 <Link to="add" className="btn btn-primary float-end">

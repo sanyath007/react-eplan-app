@@ -36,7 +36,7 @@ const ProjectView = () => {
       <div className="card">
         <div className="card-body">
           <div className="card-title">
-            <h3>แผนงานโครงการ</h3>
+            <h3>แผนงานโครงการ (Projects)</h3>
           </div>
 
           <table className="table table-striped">

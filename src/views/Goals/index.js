@@ -34,7 +34,7 @@ const GoalView = () => {
       <div className="card">
         <div className="card-body">
           <div className="card-title">
-            <h3>เป้าประสงค์</h3>
+            <h3>เป้าประสงค์ (Goals)</h3>
           </div>
 
           <table className="table table-striped">

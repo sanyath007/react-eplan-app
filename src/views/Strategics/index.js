@@ -19,7 +19,7 @@ const StrategicView = () => {
       <div className="card">
         <div className="card-body">
           <div className="card-title">
-            <h3>ยุทธศาสตร์โรงพยาบาล</h3>
+            <h3>ยุทธศาสตร์ (Strategics)</h3>
           </div>
 
           <table className="table table-striped">

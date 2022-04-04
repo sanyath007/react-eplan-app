@@ -47,7 +47,7 @@ const KpiView = () => {
           <div className="row">
             <div className="col-md-6">
               <div className="card-title">
-                <h3>ตัวชี้วัด (KPI)</h3>
+                <h3>ตัวชี้วัด (KPIs)</h3>
               </div>
             </div>
             <div className="col-md-6">
