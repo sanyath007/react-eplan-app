@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import api from '../../api'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import api from '../../api';
 
 const KpiView = () => {
   const [kpis, setKpis] = useState([]);
@@ -50,10 +51,10 @@ const KpiView = () => {
               </div>
             </div>
             <div className="col-md-6">
-              <a href="#" className="btn btn-primary float-end">
+              <Link to="add" className="btn btn-primary float-end">
                 <i className="uil uil-plus-circle"></i>
                 เพิ่มตัวชี้วัด
-              </a>
+              </Link>
             </div>
           </div>
 

@@ -5,8 +5,9 @@ import Footer from './Footer';
 import Dashboard from '../views/Dashboard';
 import StrategicView from '../views/Strategics';
 import StrategyView from '../views/Strategies';
-import ProjectView from '../views/Projects';
 import KpiView from '../views/Kpis';
+import FormKpi from '../views/Kpis/FormKpi';
+import ProjectView from '../views/Projects';
 import Sidebar from './Sidebar';
 
 const DefaultLayout = () => {
@@ -23,6 +24,7 @@ const DefaultLayout = () => {
               <Route path='strategics' element={<StrategicView />} />
               <Route path='strategies' element={<StrategyView />} />
               <Route path='kpis' element={<KpiView />} />
+              <Route path='kpis/add' element={<FormKpi />} />
               <Route path='projects' element={<ProjectView />} />
             </Routes>
           </div>
