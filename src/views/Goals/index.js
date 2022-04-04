@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import api from '../../api';
 
 const GoalView = () => {
+  const [goals, setGoals] = useState([]);
+
+  const fetchGoals = async () => {
+    const res = await api.get(`/goals`);
+
+    setGoals(res.data.items);
+  };
+
+  useEffect(() => {
+    fetchGoals();
+  }, []);
+
   return (
     <div className="content">
       <div className="card mb-2">
@@ -34,24 +47,28 @@ const GoalView = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td style={{ textAlign: 'center' }}></td>
-                <td></td>
-                <td></td>
-                <td style={{ textAlign: 'center' }}>
-                  <div className="btn-group">
-                    <a href="#" className="btn btn-primary btn-sm">
-                      <i className="uil uil-search"></i>
-                    </a>
-                    <a href="#" className="btn btn-warning btn-sm">
-                      <i className="uil uil-pen"></i>
-                    </a>
-                    <a href="#" className="btn btn-danger btn-sm">
-                      <i className="uil uil-trash-alt"></i>
-                    </a>
-                  </div>
-                </td>
-              </tr>
+              {goals && goals.map(goal => {
+                return (
+                  <tr>
+                    <td style={{ textAlign: 'center' }}>{goal.goal_no}</td>
+                    <td>{goal.goal_name}</td>
+                    <td>{goal.strategic?.strategic_name}</td>
+                    <td style={{ textAlign: 'center' }}>
+                      <div className="btn-group">
+                        <a href="#" className="btn btn-primary btn-sm">
+                          <i className="uil uil-search"></i>
+                        </a>
+                        <a href="#" className="btn btn-warning btn-sm">
+                          <i className="uil uil-pen"></i>
+                        </a>
+                        <a href="#" className="btn btn-danger btn-sm">
+                          <i className="uil uil-trash-alt"></i>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
