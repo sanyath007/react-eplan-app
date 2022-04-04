@@ -6,27 +6,35 @@ const FormKpi = () => {
   const [strategics, setStrategics] = useState([]);
   const [strategies, setStrategies] = useState([]);
   const [filteredStrategies, setFilteredStrategies] = useState([]);
+  const [factions, setFactions] = useState([]);
   const [departs, setDeparts] = useState([]);
+  const [filteredDeparts, setFilteredDeparts] = useState([]);
   const [persons, setPersons] = useState([]);
   const [filteredPersons, setFilteredPersons] = useState([]);
+  const [selectedFaction, setSelectedFaction] = useState('');
 
   const fetchInitForms = async () => {
     const res = await api.get(`/kpis/init/forms`);
 
     setStrategics(res.data.strategics);
     setStrategies(res.data.strategies);
+    setFilteredStrategies(res.data.strategies);
+    setFactions(res.data.factions);
     setDeparts(res.data.departs);
+    setFilteredDeparts(res.data.departs);
     setPersons(res.data.persons);
     setFilteredPersons(res.data.persons);
+  };
+
+  const handleSubmit = async (values, props) => {
+    console.log(values, props);
+    const res = await api.post('/kpis', values);
+    console.log(res);
   };
 
   useEffect(() => {
     fetchInitForms();
   }, []);
-
-  const handleSubmit = (values, props) => {
-    console.log(values, props);
-  };
 
   return (
     <div className="content">
@@ -80,7 +88,7 @@ const FormKpi = () => {
                         name="strategic_id"
                         value={formik.values.strategic_id}
                         onChange={(e) => {
-                          setFilteredStrategies(strategies.map(stg => stg.strategic_id === e.target.value));
+                          setFilteredStrategies(strategies.filter(stg => stg.strategic_id === e.target.value));
                           formik.handleChange(e);
                         }}
                       >
@@ -122,26 +130,46 @@ const FormKpi = () => {
                         className="form-control"
                       />
                     </div>
-                    <div className="col-md-6 mb-3">
-                      <label htmlFor="">หน่วยงานผู้รับผิดชอบ :</label>
-                      <select
-                        name="owner_depart"
-                        value={formik.values.owner_depart}
-                        onChange={(e) => {
-                          setFilteredPersons(persons.filter(p => p.member_of?.depart_id === e.target.value));
-                          formik.handleChange(e);
-                        }}
-                        className="form-control"
-                      >
-                        <option value="">-- เลือกหน่วยงานผู้รับผิดชอบ --</option>
-                        {departs && departs.map(depart => {
-                          return (
-                            <option key={depart.depart_id} value={depart.depart_id}>
-                              {depart.depart_name}
-                            </option>
-                          );
-                        })}
-                      </select>
+                    <div className="col-md-12 mb-3">
+                      <label htmlFor="">เลือกหน่วยงานผู้รับผิดชอบ :</label>
+                      <div style={{ display: 'flex', gap: '5px' }}>
+                        <select
+                          name="selectedFaction"
+                          value={selectedFaction}
+                          onChange={(e) => {
+                            setFilteredDeparts(departs.filter(dep => dep.faction_id === e.target.value));
+                            setSelectedFaction(e.target.value);
+                          }}
+                          className="form-control"
+                        >
+                          <option value="">-- เลือกกลุ่มภารกิจ --</option>
+                          {factions && factions.map(faction => {
+                            return (
+                              <option key={faction.faction_id} value={faction.faction_id}>
+                                {faction.faction_name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                        <select
+                          name="owner_depart"
+                          value={formik.values.owner_depart}
+                          onChange={(e) => {
+                            setFilteredPersons(persons.filter(p => p.member_of?.depart_id === e.target.value));
+                            formik.handleChange(e);
+                          }}
+                          className="form-control"
+                        >
+                          <option value="">-- เลือกหน่วยงานผู้รับผิดชอบ --</option>
+                          {filteredDeparts && filteredDeparts.map(depart => {
+                            return (
+                              <option key={depart.depart_id} value={depart.depart_id}>
+                                {depart.depart_name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
                     </div>
                     <div className="col-md-12 mb-3">
                       <label htmlFor="">ผู้รับผิดชอบ :</label>
