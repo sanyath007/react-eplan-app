@@ -64,6 +64,7 @@ const KpiView = () => {
                 <th style={{ width: '3%', textAlign: 'center' }}>ลำดับ</th>
                 <th>ชื่อตัวชี้วัด</th>
                 <th style={{ width: '10%', textAlign: 'center' }}>ปี</th>
+                <th style={{ width: '30%' }}>กลยุทธ์</th>
                 <th style={{ width: '10%', textAlign: 'center' }}>Actions</th>
               </tr>
             </thead>
@@ -74,6 +75,7 @@ const KpiView = () => {
                     <td style={{ textAlign: 'center' }}>{kpi.id}</td>
                     <td>{kpi.kpi_name}</td>
                     <td style={{ textAlign: 'center' }}>{kpi.year}</td>
+                    <td>{kpi.strategy?.strategy_name}</td>
                     <td style={{ textAlign: 'center' }}>
                       <div className="btn-group">
                         <a href="#" className="btn btn-primary btn-sm">
