@@ -49,7 +49,7 @@ const GoalView = () => {
             <tbody>
               {goals && goals.map(goal => {
                 return (
-                  <tr>
+                  <tr key={goal.id}>
                     <td style={{ textAlign: 'center' }}>{goal.goal_no}</td>
                     <td>{goal.goal_name}</td>
                     <td>{goal.strategic?.strategic_name}</td>

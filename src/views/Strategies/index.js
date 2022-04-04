@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../api';
+import ObjectivesModal from './ObjectivesModal';
 
 const StrategyView = () => {
   const [strategies, setStrategies] = useState([]);
+  const [objectives, setObjectives] = useState([]);
+  const [openObjectives, setOpenObjectives] = useState(false);
 
   const fetchStrategies = async () => {
     const res = await api.get('/strategies');
@@ -17,6 +20,13 @@ const StrategyView = () => {
 
   return (
     <div className="content">
+
+      <ObjectivesModal
+        show={openObjectives}
+        handleClose={() => setOpenObjectives(false)}
+        objectives={objectives}
+      />
+
       <div className="card">
         <div className="card-body">
           <div className="card-title">
@@ -39,7 +49,7 @@ const StrategyView = () => {
                 <th style={{ width: '3%', textAlign: 'center' }}>ลำดับ</th>
                 <th style={{ width: '10%', textAlign: 'center' }}>กลยุทธ์ที่</th>
                 <th>ชื่อกลยุทธ์</th>
-                <th style={{ width: '25%', textAlign: 'center' }}>ยุทธศาสตร์</th>
+                <th style={{ width: '30%' }}>ยุทธศาสตร์</th>
                 <th style={{ width: '10%', textAlign: 'center' }}>Actions</th>
               </tr>
             </thead>
@@ -49,8 +59,20 @@ const StrategyView = () => {
                   <tr key={strategy.id}>
                     <td style={{ textAlign: 'center' }}>{strategy.id}</td>
                     <td style={{ textAlign: 'center' }}>{strategy.strategy_no}</td>
-                    <td>{strategy.strategy_name}</td>
-                    <td style={{ textAlign: 'center' }}>
+                    <td>
+                      <span className="mr-2">
+                        {strategy.strategy_name}
+                      </span>
+                      {strategy.objectives.length > 0 && (
+                        <a href="#" onClick={() => {
+                          setOpenObjectives(true);
+                          setObjectives(strategy.objectives);
+                        }}>
+                          <i className="uil uil-chat"></i>
+                        </a>
+                      )}
+                    </td>
+                    <td>
                       {`ยุทธศาสตร์ที่ ${strategy.strategic?.strategic_no} ${strategy.strategic?.strategic_name}`}
                     </td>
                     <td style={{ textAlign: 'center' }}>
