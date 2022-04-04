@@ -8,7 +8,7 @@ const Navbar = () => {
         <h3>E-Plan</h3>
       </div>
       <div className="nav-user">
-        <div class="user-img">
+        <div className="user-img">
           <img src={user} alt="" />
         </div>
         <span>Query</span>

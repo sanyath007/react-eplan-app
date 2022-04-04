@@ -33,6 +33,7 @@ main .content-wrapper {
 
 main .content-wrapper .content {
   padding: 10px 15px;
+  width: 100%;
 }
 
 footer {
