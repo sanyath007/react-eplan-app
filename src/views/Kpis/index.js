@@ -58,7 +58,7 @@ const KpiView = () => {
             </div>
           </div>
 
-          <table className="table table-striped">
+          <table className="table table-striped mt-4" style={{ fontSize: '14px' }}>
             <thead>
               <tr>
                 <th style={{ width: '3%', textAlign: 'center' }}>ลำดับ</th>
@@ -73,9 +73,15 @@ const KpiView = () => {
                 return (
                   <tr key={kpi.id}>
                     <td style={{ textAlign: 'center' }}>{kpi.id}</td>
-                    <td>{kpi.kpi_name}</td>
+                    <td>
+                      {`${kpi.kpi_no} ${kpi.kpi_name}`}
+                      {!kpi.attachment && <a href="#"><i className="uil uil-file"></i></a>}
+                    </td>
                     <td style={{ textAlign: 'center' }}>{kpi.year}</td>
-                    <td>{kpi.strategy?.strategy_name}</td>
+                    <td>
+                      <p className="m-0">ยุทธศาสตร์ที่ {kpi.strategy?.strategic.strategic_no}</p>
+                      <p className="m-0">{kpi.strategy?.strategy_name}</p>
+                    </td>
                     <td style={{ textAlign: 'center' }}>
                       <div className="btn-group">
                         <a href="#" className="btn btn-primary btn-sm">
