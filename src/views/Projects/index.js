@@ -50,7 +50,17 @@ const ProjectView = () => {
       <div className="card">
         <div className="card-body">
           <div className="card-title">
-            <h3>แผนงานโครงการ (Projects)</h3>
+            <div className="row">
+              <div className="col-md-6">
+                <h3>แผนงานโครงการ (Projects)</h3>
+              </div>
+              <div className="col-md-6">
+                <Link to="add" className="btn btn-primary float-end">
+                  <i className="uil uil-plus-circle"></i>
+                  เพิ่มโครงการ
+                </Link>
+              </div>
+            </div>
           </div>
 
           <table className="table table-striped" style={{ fontSize: '14px' }}>
