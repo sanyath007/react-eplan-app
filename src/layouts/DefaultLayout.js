@@ -8,6 +8,7 @@ import GoalView from '../views/Goals';
 import StrategyView from '../views/Strategies';
 import FormStrategy from '../views/Strategies/FormStrategy';
 import KpiView from '../views/Kpis';
+import KpiDetailView from '../views/Kpis/DetailView';
 import FormKpi from '../views/Kpis/FormKpi';
 import ProjectView from '../views/Projects';
 import Sidebar from './Sidebar';
@@ -29,6 +30,7 @@ const DefaultLayout = () => {
               <Route path='strategies/add' element={<FormStrategy />} />
               <Route path='kpis' element={<KpiView />} />
               <Route path='kpis/add' element={<FormKpi />} />
+              <Route path='kpis/:id' element={<KpiDetailView />} />
               <Route path='projects' element={<ProjectView />} />
             </Routes>
           </div>

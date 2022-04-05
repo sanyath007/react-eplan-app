@@ -84,9 +84,9 @@ const KpiView = () => {
                     </td>
                     <td style={{ textAlign: 'center' }}>
                       <div className="btn-group">
-                        <a href="#" className="btn btn-primary btn-sm">
+                        <Link to={`${kpi.id}`} className="btn btn-primary btn-sm">
                           <i className="uil uil-search"></i>
-                        </a>
+                        </Link>
                         <a href="#" className="btn btn-warning btn-sm">
                           <i className="uil uil-pen"></i>
                         </a>
