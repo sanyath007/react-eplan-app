@@ -5,11 +5,13 @@ import api from '../../api';
 
 const ProjectView = () => {
   const [projects, setProjects] = useState([]);
+  const [pager, setPager] = useState(null);
 
   const fetchProjects = async () => {
     const res = await api.get(`/projects`);
 
     setProjects(res.data.items);
+    setPager(res.data.pager);
   };
 
   useEffect(() => {

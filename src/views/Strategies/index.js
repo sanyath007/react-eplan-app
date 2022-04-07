@@ -6,6 +6,7 @@ import ObjectivesModal from './ObjectivesModal';
 
 const StrategyView = () => {
   const [strategies, setStrategies] = useState([]);
+  const [pager, setPager] = useState(null);
   const [objectives, setObjectives] = useState([]);
   const [openObjectives, setOpenObjectives] = useState(false);
 
@@ -14,6 +15,7 @@ const StrategyView = () => {
     console.log(res);
 
     setStrategies(res.data.items);
+    setPager(res.data.pager);
   };
   useEffect(() => {
     fetchStrategies();
@@ -102,7 +104,7 @@ const StrategyView = () => {
             <Pagination.Ellipsis />
             <Pagination.Item>{10}</Pagination.Item>
             <Pagination.Next />
-            <Pagination.Last />
+            <Pagination.Last onClick={(e) => console.log(pager)} />
           </Pagination>
 
         </div>

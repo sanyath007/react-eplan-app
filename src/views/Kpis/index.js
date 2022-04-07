@@ -5,11 +5,13 @@ import api from '../../api';
 
 const KpiView = () => {
   const [kpis, setKpis] = useState([]);
+  const [pager, setPager] = useState(null);
 
   const fetchKpis = async () => {
     const res = await api.get(`/kpis`);
 
     setKpis(res.data.items);
+    setPager(res.data.pager);
   };
 
   useEffect(() => {
